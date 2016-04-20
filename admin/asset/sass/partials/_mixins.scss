@@ -1,0 +1,75 @@
+@mixin clear{
+	&:before, &:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+@mixin mobile {
+	@media (max-width: $screen-xs-max) {
+		@content;
+	}
+}
+@mixin tablet {
+	@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+		@content;
+	}
+}
+@mixin upto-tablet {
+	@media (max-width: $screen-sm-max) {
+		@content;
+	}
+}
+@mixin from-tablet {
+	@media (min-width: $screen-sm-min) {
+		@content;
+	}
+}
+@mixin desktop {
+	@media (min-width: $screen-md-min){
+		@content;
+	}
+}
+@mixin large {
+	@media (min-width: $screen-lg-min){
+		@content;
+	}
+}
+
+@mixin font-size($xs: inherit, $sm: inherit, $md: inherit) {
+	font-size: $xs;
+	@include tablet {
+		font-size: $sm;
+	}
+	@include desktop {
+		font-size: $md;
+	}
+}
+@mixin line-height($xs: inherit, $sm: inherit, $md: inherit) {
+	line-height: $xs;
+	@include tablet {
+		line-height: $sm;
+	}
+	@include desktop {
+		line-height: $md;
+	}
+}
+
+@mixin material-icons {
+	direction: ltr;
+	display: inline-block;	
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;
+	line-height: 1;
+	letter-spacing: normal;
+	text-transform: none;
+	vertical-align: middle;
+	white-space: nowrap;
+	word-wrap: normal;	
+	-webkit-font-feature-settings: 'liga';
+	-webkit-font-smoothing: antialiased;
+}

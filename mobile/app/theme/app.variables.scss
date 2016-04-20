@@ -1,0 +1,99 @@
+// http://ionicframework.com/docs/v2/theming/
+
+// Ionic Shared Functions
+// --------------------------------------------------
+// Makes Ionic Sass functions available to your App
+
+@import 'globals.core';
+
+// App Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files. Setting
+// variables before Ionic's Sass will use these variables rather than
+// Ionic's default Sass variable values. App Shared Sass imports belong
+// in the app.core.scss file and not this file. Sass variables specific
+// to the mode belong in either the app.ios.scss or app.md.scss files.
+
+
+// App Shared Color Variables
+// --------------------------------------------------
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+// Both iOS and MD colors can be further customized if colors
+// are different per mode.
+
+$colors: (
+  primary:    #2196f3,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222,
+  favorite:   #69BB7B
+);
+
+//Custom Variables
+//Sizes
+$full: 100%;
+$half: 50%;
+$one-third: 33.333%;
+$quarter: 25%;
+
+//intervals
+$quick: .1s;
+$fast: .25s;
+$normal: .5s;
+$slow: .75s;
+$veryslow: 1s;
+
+/* Theme Variables */
+$fixed-header-height: 50px;
+$left-nav-width: 250px;
+
+//z-index
+$zindex1: 111;
+$zindex2: 222;
+$zindex3: 333;
+$overlay-zindex: 666;
+$popup-zindex: 777;
+
+//Font
+$font-family: roboto;
+$font-xs: 14px;
+$font-sm: 14px;
+$font-md: 14px;
+$font-small: 12px;
+$font-big1: 15px;
+
+//Line- Height
+$lineheight-xs: 20px;
+$lineheight-sm: 20px;
+$lineheight-md: 20px;
+
+//Padding & Margin
+$margin1: 16px;
+$margin2: 25px;
+$margin3: 32px;
+$padding1: 16px;
+$padding2: 25px;
+$padding3: 32px;
+
+//Shadow
+$shadow1: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+
+//Colors
+$white: #ffffff;
+$black: #000000;
+$green: #008744;
+$blue: #0057e7;
+$red: #d62d20;
+$yellow: #ffa700;
+$html-bg: #ececec;
+$primary: #1976d2;
+$font-color1: #444444;
+$font-color2: #727272;
+$border-color: #e0e0e0;
+$error-color: #e53935;
+$success-color: #1976d2;

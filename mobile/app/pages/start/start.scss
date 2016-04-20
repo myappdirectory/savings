@@ -1,0 +1,44 @@
+.start-page {
+	background-image: url('../../img/start-bg.jpg');
+	background-size: cover;
+	.main-section {
+		color: #fff;
+		height: 100%;
+		text-align: center;
+		position: relative;
+		.logo-container {
+			position: absolute;
+			top: 35%;
+			width: 100%;
+		}
+		.brief-info {
+			position: absolute;
+			top: 60%;
+			width: 100%;
+		}
+		.buttons {
+			bottom: 20px;
+			position: absolute;
+			width: 100%;
+			button {
+				background-color: #fff;
+				box-shadow: none;
+				color: map-get($colors, primary);
+				margin: 10px 0;
+				&.button-outline {
+					background-color: transparent;
+					border-color: #fff;
+					color: #fff;
+				}
+				&.w-half {
+					clear: none;
+					float: left !important;
+					width: 48%;
+					&:first-child {
+						margin-right: 10px;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,18 @@
+<ion-navbar *navbar>
+	<button menuToggle *ngIf="!selectedItem"><ion-icon name="menu"></ion-icon></button>
+	<ion-title>Payment Completed</ion-title>
+</ion-navbar>
+
+<ion-content padding class="success-page">
+	<ion-refresher (refresh)="doRefresh($event)">
+		<ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing..."></ion-refresher-content>
+	</ion-refresher>
+	<ion-card>
+		<ion-card-content>
+			<p>Your payment has been made successfully.</p>
+		</ion-card-content>
+	</ion-card>
+	<div class="buttons">
+		<button block (click)="gotoHome()">Back to Home</button>
+	</div>
+</ion-content>

@@ -1,0 +1,24 @@
+.plans-page {
+	
+}
+.plan-card {
+	color: #fff;
+	text-transform: capitalize;
+	ion-card-title, p { color: #fff; }
+	&.orange {
+		background-color: #F57C00;
+		ion-item {color: #F57C00;}
+	}
+	&.blue {
+		background-color: #1976D2;
+		ion-item {color: #1976D2;}
+	}
+	&.purple {
+		background-color: #512DA8;
+		ion-item {color: #512DA8;}
+	}
+	&.green {
+		background-color: #388E3C;
+		ion-item {color: #388E3C;}
+	}
+}

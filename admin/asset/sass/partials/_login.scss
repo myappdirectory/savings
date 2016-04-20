@@ -1,0 +1,31 @@
+.login-page {
+	//@include position(absolute, 0 0 0 0);
+	background-image: url('../img/login-bg.jpg');
+	background-size: cover;
+	.login-container {
+		background-color: $white;
+		box-shadow: $shadow1;
+		margin: auto;
+		max-width: 400px;
+		padding: $padding3;
+		.login-head {
+			.logo {
+				background-color: $primary;
+				color: $white;
+				height: 128px;
+				line-height: 128px;
+				font-size: 86px;
+				margin: $margin3 auto;
+				width: 128px;
+			}
+			.title {
+				@include font-size(14px, 17px, 17px);
+				margin: 10px 0 20px;
+			}
+		}
+		.extra-link {
+			@include clear;
+			padding: $padding2 0;
+		}
+	}
+}

@@ -1,0 +1,26 @@
+.a-center { text-align: center; }
+.a-left { text-align: left; }
+.a-right { text-align: right; }
+.block { display: block; }
+.capitalize { text-transform: capitalize; }
+.f-left { float: left; }
+.f-right { float: right; }
+.f-none { float: none; }
+.hide {display: none;}
+.inline { display: inline; }
+.inline-block { display: inline-block; }
+.lowercase { text-transform: lowercase; }
+.margin1 { margin: $margin1; }
+.margin2 { margin: $margin2; }
+.margin3 { margin: $margin3; }
+.padding1 { padding: $padding1; }
+.padding2 { padding: $padding2; }
+.padding3 { padding: $padding3; }
+.relative{ position: relative;}
+.show {display: block;}
+.table {display: table; width: $full; height: $full;}
+.table-cell {display: table-cell; text-align: center; vertical-align: middle;}
+.tt-none { text-transform: none; }
+.uppercase { text-transform: uppercase; }
+.w-full { width: $full; }
+.w-half { width: $half; }

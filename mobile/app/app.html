@@ -1,0 +1,36 @@
+<ion-menu [content]="content" *ngIf="appData">
+	<ion-content>
+		<div class="banner" *ngIf="appData.profile">
+			<div class="table">
+				<div class="table-cell">
+					<div class="image">
+						<img [src]="appData.profile.image" class="thumb" *ngIf="appData.profile.image">
+						<ion-icon name="person" class="profile-img-icon" *ngIf="!appData.profile.image"></ion-icon>
+					</div>
+					<div class="name">{{appData.profile.firstname + ' ' + appData.profile.lastname}}</div>
+				</div>
+			</div>
+		</div>
+		<ion-list>
+			<button ion-item *ngFor="#p of pages" (click)="openPage(p)">{{p.title}}</button>
+			<button ion-item (click)="logout()">logout</button>
+		</ion-list>
+	</ion-content>
+</ion-menu>
+<ion-nav id="nav" [root]="rootPage" #content swipe-back-enabled="false"></ion-nav>
+<section class="loading" *ngIf="appData && appData.loading">
+	<div class="table">
+		<div class="table-cell padding1">
+			<div class="loader">
+				<svg class="circular" viewBox="25 25 50 50">
+					<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10"/>
+				</svg>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="global-messages" *ngIf="appData && (appData.globalMessage || appData.connectionError)">
+	<div class="connection-error message" *ngIf="appData.connectionError">{{appData.connectionError.message}}</div>
+	<div class="message {{appData.message.type}}" *ngIf="appData.message">{{appData.globalMessage.message}}</div>
+</section>

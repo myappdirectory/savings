@@ -1,0 +1,99 @@
+/* Variables */
+
+//Screen Size
+$screen-xs:                  320px;
+$screen-xs-min:              $screen-xs;
+$screen-phone:               $screen-xs-min;
+
+$screen-sm:                  768px;
+$screen-sm-min:              $screen-sm;
+$screen-tablet:              $screen-sm-min;
+
+$screen-md:                  980px;
+$screen-md-min:              $screen-md;
+$screen-desktop:             $screen-md-min;
+
+$screen-lg:                  1200px;
+$screen-lg-min:              $screen-lg;
+$screen-lg-desktop:          $screen-lg-min;
+
+$screen-xs-max:              ($screen-sm-min - 1);
+$screen-sm-max:              ($screen-md-min - 1);
+$screen-md-max:              ($screen-lg-min - 1);
+
+//Grid system
+$grid-columns:              12;
+$grid-gutter-width:         36px;
+$grid-float-breakpoint:     $screen-sm-min;
+$grid-float-breakpoint-max: ($grid-float-breakpoint - 1);
+
+//Container sizes
+$container-tablet:             100%;
+$container-sm:                 $container-tablet;
+$container-desktop:            1200px;
+$container-md:                 $container-desktop;
+$container-large-desktop:      1200px;
+$container-lg:                 $container-large-desktop;
+
+//Sizes
+$full: 100%;
+$half: 50%;
+$one-third: 33.333%;
+$quarter: 25%;
+
+//intervals
+$quick: .1s;
+$fast: .25s;
+$normal: .5s;
+$slow: .75s;
+$veryslow: 1s;
+
+/* Theme Variables */
+$fixed-header-height: 50px;
+$left-nav-width: 250px;
+
+//z-index
+$zindex1: 111;
+$zindex2: 222;
+$zindex3: 333;
+$overlay-zindex: 666;
+$popup-zindex: 777;
+
+//Font
+$font-family: roboto;
+$font-xs: 14px;
+$font-sm: 14px;
+$font-md: 14px;
+$font-small: 12px;
+$font-big1: 15px;
+
+//Line- Height
+$lineheight-xs: 20px;
+$lineheight-sm: 20px;
+$lineheight-md: 20px;
+
+//Padding & Margin
+$margin1: $grid-gutter-width / 2;
+$margin2: 25px;
+$margin3: 32px;
+$padding1: $grid-gutter-width / 2;
+$padding2: 25px;
+$padding3: 32px;
+
+//Shadow
+$shadow1: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+
+//Colors
+$white: #ffffff;
+$black: #000000;
+$green: #008744;
+$blue: #0057e7;
+$red: #d62d20;
+$yellow: #ffa700;
+$html-bg: #ececec;
+$primary: #1976d2;
+$font-color1: #444444;
+$font-color2: #727272;
+$border-color: #e0e0e0;
+$error-color: #e53935;
+$success-color: #1976d2;

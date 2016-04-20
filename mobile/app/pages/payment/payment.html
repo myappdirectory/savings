@@ -1,0 +1,58 @@
+<ion-navbar *navbar>
+	<button menuToggle *ngIf="!selectedItem"><ion-icon name="menu"></ion-icon></button>
+	<ion-title>Pay Now</ion-title>
+</ion-navbar>
+
+<ion-content class="payment-page">
+	<ion-refresher (refresh)="doRefresh($event)">
+		<ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing..."></ion-refresher-content>
+	</ion-refresher>
+	<div class="banner">
+		<div class="table">
+			<div class="table-cell">
+				Payment for Saving : {{savingID}}
+			</div>
+		</div>
+	</div>
+	<div class="form" padding>
+		<div class="fields">
+			<form (ngSubmit)="payNow()" [ngFormModel]="paymentForm">
+				<ion-list>
+					<ion-item class="icon_select">
+						<ion-label><ion-icon name="card"></ion-icon><span class="text">Card Type</span></ion-label>
+						<ion-select ngControl="card_type" autofocus="!card_type.valid">
+							<ion-option value="visa">Visa</ion-option>
+							<ion-option value="master">Master</ion-option>
+							<ion-option value="amex">Amex</ion-option>
+							<ion-option value="debit">Debit</ion-option>
+						</ion-select>
+					</ion-item>
+					<ion-item>
+						<ion-label><ion-icon name="person"></ion-icon></ion-label>
+						<ion-input type="text" placeholder="Name" ngControl="name" autofocus="!name.valid"></ion-input>
+					</ion-item>
+					<ion-item>
+						<ion-label><ion-icon name="lock"></ion-icon></ion-label>
+						<ion-input type="text" placeholder="Number" ngControl="number" autofocus="!number.valid"></ion-input>
+					</ion-item>
+					<ion-item>
+						<ion-label><ion-icon name="key"></ion-icon></ion-label>
+						<ion-input type="text" placeholder="CVV Code" ngControl="cvv" autofocus="!cvv.valid"></ion-input>
+					</ion-item>
+					<ion-item class="icon_select item item-select item-multiple-inputs">
+						<ion-label><ion-icon name="calendar"></ion-icon><span class="text">Year</span></ion-label>
+						<ion-select ngControl="expiry_year" autofocus="!expiry_year.valid">
+							<ion-option value="{{year}}" *ngFor="#year of [2000, 2002,2003,2004,2005]">{{year}}</ion-option>
+						</ion-select>
+						<ion-select ngControl="expiry_month" autofocus="!expiry_month.valid">
+							<ion-option value="{{month}}" *ngFor="#month of ['Jan', 'Feb', 'Mar', 'Apr']">{{month}}</ion-option>
+						</ion-select>
+					</ion-item>
+				</ion-list>
+				<div class="buttons">
+					<button block type="submit" [disabled]="!paymentForm.valid">Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</ion-content>

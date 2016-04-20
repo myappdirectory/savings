@@ -1,0 +1,31 @@
+@import "../../globals.core";
+
+// Content
+// --------------------------------------------------
+
+
+// Content Padding
+// --------------------------------------------------
+
+[no-padding] {
+  padding: 0;
+}
+
+
+// Content Margin
+// --------------------------------------------------
+
+[no-margin] {
+  margin: 0;
+}
+
+// Content Fixed
+// --------------------------------------------------
+
+ion-fixed {
+  position: absolute;
+
+  z-index: $z-index-fixed-content;
+
+  transform: translateZ(0);
+}

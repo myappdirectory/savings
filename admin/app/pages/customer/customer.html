@@ -1,0 +1,135 @@
+<section class="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="inner-content">
+					
+					<div class="md-card margin1 padding1" *ngIf="mode == 'list'">
+						<div class="list-title">
+							<h2>{{list.title}}</h2>
+							<div class="action-buttons">
+								<button class="md-button" type="button" (click)="addNew()">Add New</button>
+							</div>
+						</div>
+						<div class="table-container res-table">
+							<table>
+								<thead>
+									<tr class="title">
+										<td class="id-cell">S.no</td>
+										<td class="image-cell" *ngFor="#field of list.fields">{{field.title}}</td>
+										<td class="action-cell a-center">Action</td>
+									</tr>
+								</thead>
+								<tbody *ngIf="app && app.listItems">
+									<tr *ngFor="#item of app.listItems | MapToIterable; #i=index">
+										<td>{{i + 1}}</td>
+										<td *ngFor="#field of list.fields">
+											<span class="value" *ngIf="field.type == 'text'">
+												<span *ngIf="item[field.code] && field.code == 'location'">{{item[field.code] | LocationLabel}}</span>
+												<span *ngIf="item[field.code] && field.code == 'status'">{{item[field.code] | StatusLabel}}</span>												
+												<span *ngIf="field.code != 'status' && field.code != 'location'">{{item[field.code]}}</span>
+											</span>
+											<img [src]="item[field.code]" class="thumb" *ngIf="field.type == 'image'"/>
+										</td>
+										<td class="a-center">
+											<a href="javascript:;" class="edit-link" (click)="editItem(item._ref)">
+												<i class="material-icons edit"></i>
+											</a>
+											<a href="javascript:;" class="confirmDelete delete-link" (click)="deleteItem(item._ref)">
+												<i class="material-icons delete"></i>
+											</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
+					<div class="md-card margin1"  *ngIf="mode == 'edit'">
+						<div class="item-info">
+							<form action="javascript:;" [(ngFormModel)]="form" (ngSubmit)="saveItem();">
+							<input type="hidden" ngControl="_ref" [ngModel]="selectedItem._ref">
+							<div class="form-fields" *ngIf="true">
+								<div class="title-box table">
+									<div class="image table-cell" *ngIf="selectedItem.image"><img class="thumbnail" [src]="selectedItem.image"/></div>
+									<div class="detail table-cell">
+										<div class="title">{{selectedItem.firstname ? selectedItem.firstname +' '+ selectedItem.lastname : 'Add New'}}</div>
+										<div class="sub-title">{{selectedItem.email}}</div>
+									</div>
+									<div class="actions table-cell">										
+										<button class="md-button inline cancel-btn f-right" type="button" (click)="cancelEdit();">cancel</button>
+										<button class="md-button inline save-btn f-right" type="submit" [disabled]="!form.valid">save</button>
+									</div>
+								</div>
+								<div class="editable-part padding1">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="md-input" [class.filled]="selectedItem.firstname">
+												<span class="placeholder">First Name</span>
+												<input type="text" class="textbox" ngControl="firstname" [ngModel]="selectedItem.firstname" />
+												<control-messages control="firstname"></control-messages>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="md-input" [class.filled]="selectedItem.lastname">
+												<span class="placeholder">Last Name</span>
+												<input type="text" class="textbox" ngControl="lastname" [ngModel]="selectedItem.lastname" />
+												<control-messages control="lastname"></control-messages>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="md-input" [class.filled]="selectedItem.email">
+												<span class="placeholder">Email</span>
+												<input type="text" class="textbox" ngControl="email" [ngModel]="selectedItem.email" [disabled]="selectedItem.email" />
+												<control-messages control="email"></control-messages>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="md-input" [class.filled]="selectedItem.password">
+												<span class="placeholder">Password</span>
+												<input type="password" class="textbox" ngControl="password" [ngModel]="selectedItem.password" [disabled]="selectedItem.password"/>
+												<control-messages control="password"></control-messages>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="md-input" [class.filled]="selectedItem.image">
+												<input type="hidden" class="textbox" ngControl="image" [ngModel]="selectedItem.image" accept="image/*"/>
+												<input type="file" class="textbox" (change)="saveImage($event, 'image', selectedItem.email)"/>
+												<control-messages control="image"></control-messages>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="md-select" [class.filled]="selectedItem.location">
+												<span class="placeholder">Location</span>
+												<select class="selectbox" ngControl="location" [ngModel]="selectedItem.location" *ngIf="app.config">
+													<option *ngFor="#location of app.config.location | MapToIterable" [value]="location.code">{{location.label}}</option>
+												</select>
+												<control-messages control="location"></control-messages>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="md-select" [class.filled]="selectedItem.status">
+												<span class="placeholder">Status</span>
+												<select class="selectbox" ngControl="status" [ngModel]="selectedItem.status">
+													<option *ngFor="#status of app.config.status | MapToIterable" [value]="status.code">{{status.label}}</option>
+												</select>		
+												<control-messages control="status"></control-messages>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

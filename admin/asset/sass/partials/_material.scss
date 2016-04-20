@@ -1,0 +1,167 @@
+.md-input {
+	height: 70px;
+	margin: 15px 0 0;
+	padding: $padding2 0 0;
+	position: relative;	
+	&.focused, &.filled {
+		.placeholder {
+			color: $primary;
+			font-size: 12px;
+			top: 10px;
+		}
+		.textbox {
+			border-color: $primary;
+			border-width: 0 0 2px;
+		}
+	}
+	control-messages {
+		@include position(absolute, auto auto -22px 0);
+		color: $error-color;
+		font-size: 12px;
+		padding: 0 0 0 4px;
+		text-transform: capitalize;
+	}
+	.textbox {
+		@include position(absolute, auto 0 0 0);
+		@include transition(all $fast ease-out);
+		border-color: $border-color;
+		border-width: 0 0 1px;
+		outline: none;
+		padding: 12px 4px;
+		width: $full;
+		&.ng-touched.ng-invalid {
+			border-color: $error-color;
+			border-width: 0 0 2px;	
+			&:focus {
+				border-color: $primary;
+			}			
+		}
+	}
+	.placeholder {
+		@include position(absolute, 35px auto auto 4px);
+		@include transition(all $fast ease-out);
+		color: $font-color2;
+		text-transform: capitalize;
+		z-index: 2;
+	}
+	&.md-textarea {
+		height: 105px;
+		textarea {
+			resize: none;
+			top: 25px;
+		}
+	}
+}
+
+.md-checkbox {
+	position: relative;
+	.checkbox {
+		visibility: hidden;
+	}
+	label {
+		@include position(absolute, auto auto auto 0);
+		@include transition(all $fast ease-out);
+		cursor: pointer;
+		text-transform: capitalize;
+		&:before {
+			@include material-icons;
+			content: 'check_box_outline_blank';
+			margin-top: -4px;
+			padding: 0 5px 0 0;
+		}
+	}
+	&.checked {
+		label {
+			&:before {
+				color: $primary;
+				content: 'check_box';
+			}
+		}
+	}
+}
+
+.md-select {
+	height: 70px;
+	margin: 15px 0 0;
+	padding: $padding2 0 0;
+	position: relative;	
+	&.focused, &.filled {
+		.selectbox {
+			border-color: $primary;
+			border-width: 0 0 2px;
+		}
+		.placeholder {
+			color: $primary;
+			font-size: 12px;
+			top: 10px;
+		}
+	}
+	.selectbox {
+		@include position(absolute, auto 0 0 0);
+		@include transition(all $fast ease-out);
+		border-color: $border-color;
+		border-width: 0 0 1px;
+		outline: none;
+		padding: 12px 4px;
+		width: $full;
+		&.ng-touched.ng-invalid {
+			border-color: $error-color;
+			border-width: 0 0 2px;	
+			&:focus {
+				border-color: $primary;
+			}			
+		}
+	}
+	.placeholder {
+		@include position(absolute, 10px auto auto 4px);
+		@include transition(all $fast ease-out);
+		color: $font-color2;
+		font-size: 12px;
+		text-transform: capitalize;
+		z-index: 2;
+	}
+	control-messages {
+		@include position(absolute, auto auto -22px 0);
+		color: $error-color;
+		font-size: 12px;
+		padding: 0 0 0 4px;
+		text-transform: capitalize;
+	}
+	&.multiselect {
+		height: 120px;
+		.selectbox {
+			height: 90px;
+		}
+	}
+}
+
+.md-button {
+	background-color: $primary;
+	border: solid 1px $primary;
+	border-radius: 2px;
+	color: $white;
+	cursor: pointer;
+	display: block;
+	min-height: 40px;
+	min-width: 100px;
+	text-transform: uppercase;
+	width: $full;
+	&:hover {
+		box-shadow: $shadow1;
+	}
+	&.blank {
+		background-color: $white;
+		border: solid 1px $white;
+		color: $primary;
+	}
+	&.rab {
+		border-radius: $half;
+		height: 40px;
+		width: 40px;
+	}
+}
+
+.md-card {
+	background-color: $white;
+	box-shadow: $shadow1;
+}

@@ -1,0 +1,71 @@
+<section class="content login-page">
+	<div class="table">
+		<div class="table-cell padding1">
+			<div class="login-container md-card" *ngIf="mode == 'login'">
+				<div class="login-head">
+					<div class="logo">A</div>
+					<div class="title">Log in to your account</div>
+				</div>
+				<div class="form">
+					<form method="post" action="javascript:;" [ngFormModel]="loginForm" (submit)="login()">
+						<div class="field">
+							<div class="md-input">
+								<label class="placeholder">email*</label>
+								<input type="text" class="textbox" ngControl="email" autofocus="!email.valid">
+								<control-messages control="email"></control-messages>
+							</div>
+						</div>
+						<div class="field">
+							<div class="md-input">
+								<label class="placeholder">password*</label>
+								<input type="password" class="textbox" ngControl="password" autofocus="!password.valid">
+								<control-messages control="password"></control-messages>
+							</div>
+						</div>
+						<div class="field extra-link">
+							<div class="a-left f-left w-half hide">
+								<div class="md-checkbox">
+									<input type="checkbox" class="checkbox" ngControl="remember" id="remember">
+									<label for="remember">Remember me</label>
+								</div>
+							</div>
+							<div class="a-right f-right w-half">
+								<a href="javascript:;" (click)="mode = 'password'">forgot password</a>
+							</div>
+						</div>
+						<div class="field button-field">
+							<button type="submit" [disabled]="!loginForm.valid" class="md-button">login</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			
+			<div class="login-container md-card" *ngIf="mode == 'password'">
+				<div class="login-head">
+					<div class="logo">A</div>
+					<div class="title">Recover Password</div>
+				</div>
+				<div class="form">
+					<form method="post" action="javascript:;" [ngFormModel]="passwordForm" (submit)="getPassword()">
+						<div class="field">
+							<div class="md-input">
+								<label class="placeholder">email*</label>
+								<input type="text" class="textbox" ngControl="email" autofocus="!email.valid">
+								<control-messages control="email"></control-messages>
+							</div>
+						</div>
+						
+						<div class="field extra-link">							
+							<div class="a-right f-right w-half">
+								<a href="javascript:;" (click)="mode = 'login'">back to login</a>
+							</div>
+						</div>
+						<div class="field button-field">
+							<button type="submit" [disabled]="!passwordForm.valid" class="md-button">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

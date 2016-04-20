@@ -1,0 +1,55 @@
+<ion-navbar *navbar>
+	<button menuToggle *ngIf="!selectedItem"><ion-icon name="menu"></ion-icon></button>
+	<ion-title>Profile</ion-title>
+</ion-navbar>
+
+<ion-content class="profile-page">
+	<ion-refresher (refresh)="doRefresh($event)">
+		<ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing..."></ion-refresher-content>
+	</ion-refresher>
+	<div class="banner">
+		<div class="table">
+			<div class="table-cell">
+				<div class="profile-image"><img src="" /></div>
+				<a class="block" href="javascript:;">Change Photo</a>
+			</div>
+		</div>
+	</div>
+	<div class="form" padding>
+		<div class="fields">
+			<form (ngSubmit)="saveProfile()" [ngFormModel]="profileForm">
+			<input type="hidden" ngControl="_ref" [ngModel]="formData._ref">
+				<ion-list>
+					<ion-item>
+						<ion-label><ion-icon name="person"></ion-icon></ion-label>
+						<ion-input type="text" placeholder="Firstname" ngControl="firstname" autofocus="!firstname.valid" [ngModel]="formData.firstname"></ion-input>
+					</ion-item>
+					<control-messages control="firstname"></control-messages>
+					<ion-item>
+						<ion-label><ion-icon name="person"></ion-icon></ion-label>
+						<ion-input type="text" placeholder="Lastname" ngControl="lastname" autofocus="!lastname.valid" [ngModel]="formData.lastname"></ion-input>
+					</ion-item>
+					<control-messages control="lastname"></control-messages>
+					<ion-item>
+						<ion-label><ion-icon name="call"></ion-icon></ion-label>
+						<ion-input type="text" placeholder="Phone" ngControl="phone" autofocus="!phone.valid" [ngModel]="formData.phone"></ion-input>
+					</ion-item>
+					<control-messages control="phone"></control-messages>
+					<ion-item class="icon_select">
+						<ion-label><ion-icon name="location"></ion-icon>Location</ion-label>
+						<ion-select ngControl="location" autofocus="!location.valid" [ngModel]="formData.location">
+							<ion-option value="mad">Chennai</ion-option>
+							<ion-option value="cbe">Coimbatore</ion-option>
+							<ion-option value="mdu">Madurai</ion-option>
+							<ion-option value="slm">Salem</ion-option>
+						</ion-select>
+					</ion-item>
+					<control-messages control="location"></control-messages>
+				</ion-list>
+				<div class="buttons">
+					<button block [disabled]="!profileForm.valid">Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</ion-content>

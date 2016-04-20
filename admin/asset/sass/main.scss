@@ -1,0 +1,27 @@
+/* Main Sass File */
+
+@import "compass/reset";
+
+//Import Variables
+@import "partials/variables";
+
+//Import Dependencies
+@import "partials/bourbon/bourbon";
+@import "partials/bootstrap/bootstrap";
+@import "partials/fonts";
+
+//Import Common Files
+@import "partials/mixins";
+@import "partials/utility";
+
+//Theme Files
+@import "partials/icons";
+@import "partials/material";
+@import "partials/global";
+@import "partials/layout";
+
+
+//Pages
+@import "partials/login";
+@import "partials/list";
+@import "partials/edit";

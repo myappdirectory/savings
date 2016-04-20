@@ -1,0 +1,84 @@
+<main>
+	<section class="page" *ngIf="app && app.auth">
+		<aside class="leftmenu" [class.active]="showMenu">
+			<div class="user-info">
+				<div class="table">
+					<div class="table-cell image-cell"><div class="user-img">S</div></div>
+					<div class="table-cell info-cell">
+						<div class="user-fullname a-left">admin</div>
+						<div class="user-role"></div>
+					</div>
+				</div>
+			</div>
+			<nav class="side-nav" *ngIf="menu">
+				<ul>
+					<li [class.active]="isMenuActive([link.component])" *ngFor="#link of menu">
+						<a [routerLink]="[link.component]" (click)="showMenu = false;">
+							<span class="menu-icon"><i class="material-icons {{link.class}}"></i></span>
+							<span class="menu-title">{{link.title}}</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</aside>
+		<header>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-3 left-links">
+						<ul>
+							<li [class.active]="showMenu"><a href="javascript:;" (click)="showMenu = !showMenu"><i class="material-icons menu"></i></a></li>
+						</ul>
+					</div>
+					<div class="col-xs-6 main-logo a-center">
+						<a class="logo" *ngIf="app && app.config">{{app.config.name}}</a>
+					</div>
+					<div class="col-xs-3 right-links a-right">
+						<ul>
+							<li class="toggleactive">
+								<a href="javascript:;" title="Logout" (click)="logout()"><i class="material-icons exit_to_app"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+		<section class="page-content">
+			<router-outlet></router-outlet>
+		</section>
+	</section>
+	
+	<section class="page" *ngIf="app && app.auth === null">
+		<app-login></app-login>
+	</section>
+	
+	<section class="alert" *ngIf="app && app.alert">
+		<div class="table">
+			<div class="table-cell padding1">
+				<div class="message">
+					<div class="title">{{app.alert.title}}</div>
+					<div class="content">{{app.alert.message}}</div>
+					<div class="buttons end">
+						<a href="javascript:void(0)" (click)="closeAlert();">ok</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="loading" *ngIf="app && app.loading">
+		<div class="table">
+			<div class="table-cell padding1">
+				<div class="loader">
+					<svg class="circular" viewBox="25 25 50 50">
+						<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10"/>
+					</svg>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="global-messages" *ngIf="app && (app.globalMessage || app.connectionError)">
+		<div class="connection-error message" *ngIf="app.connectionError">{{app.connectionError.message}}</div>
+		<div class="message {{app.message.type}}" *ngIf="app.message">{{app.globalMessage.message}}</div>
+	</section>
+</main>

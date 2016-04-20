@@ -1,0 +1,22 @@
+.material-icons { @include material-icons(); }
+
+.add:before{ content: 'add';}
+.card_membership:before{content: 'card_membership';}
+.close:before{ content: 'close';}
+.dashboard:before{ content: 'dashboard';}
+.delete:before{ content: 'delete';}
+.edit:before{ content: 'edit';}
+.exit_to_app:before{ content: 'exit_to_app';}
+.first_page:before{ content: 'first_page';}
+.last_page:before{ content: 'last_page';}
+.menu:before{ content: 'menu';}
+.more_vert:before{ content: 'more_vert';}
+.navigate_before:before{ content: 'navigate_before';}
+.navigate_next:before{ content: 'navigate_next';}
+.notifications:before{ content: 'notifications';}
+.people:before{ content: 'people';}
+.save:before{ content: 'save';}
+.search:before{ content: 'search';}
+.settings:before{ content: 'settings';}
+.view_module:before{ content: 'view_module';}
+.widgets:before{ content: 'widgets';}

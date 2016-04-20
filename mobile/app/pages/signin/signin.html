@@ -1,0 +1,55 @@
+<ion-navbar *navbar class="transparent">
+	<button menuToggle *ngIf="!selectedItem"><ion-icon name="menu"></ion-icon></button>
+	<ion-title>Sign In</ion-title>
+</ion-navbar>
+
+<ion-content class="signin-page">
+	<div class="banner">
+		<div class="table">
+			<div class="table-cell">
+				<div class="logo"><div class="logo-text">Savings</div></div>
+			</div>
+		</div>
+	</div>
+	<div class="form signin" padding *ngIf="mode == 'singin'">
+		<div class="form-title">Welcome Back</div>
+		<div class="fields">
+			<form (ngSubmit)="signIn()" [ngFormModel]="signinForm" >
+				<ion-list>
+					<ion-item>
+						<ion-label><ion-icon name="mail"></ion-icon></ion-label>
+						<ion-input type="text" placeholder="Email" ngControl="email" autofocus="!email.valid"></ion-input>
+					</ion-item>
+					<control-messages control="email"></control-messages>
+					<ion-item>
+						<ion-label><ion-icon name="lock"></ion-icon></ion-label>
+						<ion-input type="password" placeholder="Password" ngControl="password" autofocus="!password.valid"></ion-input>
+					</ion-item>
+					<control-messages control="password"></control-messages>
+				</ion-list>
+				<div class="buttons">
+					<button block [disabled]="!signinForm.valid">Sign In</button>
+					<button block outline (click)="forgotPassword()">Forgot password</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="form password" padding *ngIf="mode == 'password'">
+		<div class="form-title">Forgot Password</div>
+		<div class="fields">
+			<form (ngSubmit)="resetPassword()" [ngFormModel]="passwordForm" >
+				<ion-list>
+					<ion-item>
+						<ion-label><ion-icon name="mail"></ion-icon></ion-label>
+						<ion-input type="text" placeholder="Email" ngControl="email" autofocus="!email.valid"></ion-input>
+					</ion-item>
+					<control-messages control="email"></control-messages>
+				</ion-list>
+				<div class="buttons">
+					<button block [disabled]="!passwordForm.valid">Submit</button>
+					<button block outline (click)="backToSignin()">Back to sign in</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</ion-content>
