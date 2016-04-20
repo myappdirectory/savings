@@ -33,7 +33,7 @@ export class StatusLabel implements PipeTransform {
 	}
 	
 	transform(value: any, args: any[] = null): any {
-		if(this.app && this.app.config && this.app.config.status) {
+		if(this.app && this.app.config && this.app.config.status && this.app.config.status[value]) {
 			return this.app.config.status[value]['label'];
 		} else {
 			this.dataService.getConfig();
@@ -59,7 +59,7 @@ export class LocationLabel implements PipeTransform {
 	}
 	
 	transform(value: any, args: any[] = null): any {
-		if(this.app && this.app.config && this.app.config.location) {
+		if(this.app && this.app.config && this.app.config.location && this.app.config.location[value]) {
 			return this.app.config.location[value]['label'];
 		} else {
 			this.dataService.getConfig();

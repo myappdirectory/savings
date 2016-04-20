@@ -55,7 +55,7 @@ System.register(['angular2/core', '../services/data/data'], function(exports_1, 
                 };
                 StatusLabel.prototype.transform = function (value, args) {
                     if (args === void 0) { args = null; }
-                    if (this.app && this.app.config && this.app.config.status) {
+                    if (this.app && this.app.config && this.app.config.status && this.app.config.status[value]) {
                         return this.app.config.status[value]['label'];
                     }
                     else {
@@ -84,7 +84,7 @@ System.register(['angular2/core', '../services/data/data'], function(exports_1, 
                 };
                 LocationLabel.prototype.transform = function (value, args) {
                     if (args === void 0) { args = null; }
-                    if (this.app && this.app.config && this.app.config.location) {
+                    if (this.app && this.app.config && this.app.config.location && this.app.config.location[value]) {
                         return this.app.config.location[value]['label'];
                     }
                     else {

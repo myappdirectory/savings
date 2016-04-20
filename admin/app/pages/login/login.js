@@ -48,7 +48,7 @@ System.register(['angular2/core', 'angular2/common', '../../services/data/data',
                     });
                 }
                 LoginPage.prototype.register = function () {
-                    var data = { email: "mail.sureshknithi@gmail.com", password: "june9th.", role: "admin", name: "Suresh K", location: "Chennai", status: "active" };
+                    var data = { email: "mail.sureshknithi@gmail.com", password: "june9th.", role: "admin", firstname: "Suresh", lastname: "K", location: "Chennai", status: 1 };
                     this.dataService.saveAdmin(data);
                 };
                 LoginPage.prototype.login = function () {

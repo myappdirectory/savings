@@ -82,14 +82,14 @@
 										<div class="col-md-6">
 											<div class="md-input" [class.filled]="selectedItem.email">
 												<span class="placeholder">Email</span>
-												<input type="text" class="textbox" ngControl="email" [ngModel]="selectedItem.email" [disabled]="selectedItem.email" />
+												<input type="text" class="textbox" ngControl="email" [ngModel]="selectedItem.email" [readonly]="selectedItem.email" />
 												<control-messages control="email"></control-messages>
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="md-input" [class.filled]="selectedItem.password">
 												<span class="placeholder">Password</span>
-												<input type="password" class="textbox" ngControl="password" [ngModel]="selectedItem.password" [disabled]="selectedItem.password"/>
+												<input type="password" class="textbox" ngControl="password" [ngModel]="selectedItem.password" [readonly]="selectedItem.password"/>
 												<control-messages control="password"></control-messages>
 											</div>
 										</div>
@@ -103,7 +103,7 @@
 											</div>
 										</div>
 										<div class="col-md-6">
-											<div class="md-select" [class.filled]="selectedItem.location">
+											<div class="md-select" [class.filled]="selectedItem.location" (change)="selectedItem.location = $event.target.value">
 												<span class="placeholder">Location</span>
 												<select class="selectbox" ngControl="location" [ngModel]="selectedItem.location" *ngIf="app.config">
 													<option *ngFor="#location of app.config.location | MapToIterable" [value]="location.code">{{location.label}}</option>
@@ -114,7 +114,7 @@
 									</div>
 									<div class="row">
 										<div class="col-md-6">
-											<div class="md-select" [class.filled]="selectedItem.status">
+											<div class="md-select" [class.filled]="selectedItem.status" (change)="selectedItem.status = $event.target.value">
 												<span class="placeholder">Status</span>
 												<select class="selectbox" ngControl="status" [ngModel]="selectedItem.status">
 													<option *ngFor="#status of app.config.status | MapToIterable" [value]="status.code">{{status.label}}</option>

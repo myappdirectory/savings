@@ -25,7 +25,7 @@ System.register(['angular2/core', 'rxjs/Observable', 'rxjs/add/operator/share'],
             DataService = (function () {
                 function DataService() {
                     var _this = this;
-                    this.firebaseUrl = "https://saving.firebaseio.com/";
+                    this.firebaseUrl = "https://my-savings.firebaseio.com/";
                     this.backendServer = "http://localhost/git/savings/";
                     this._adminRef = 'admin';
                     this._userRef = 'users';

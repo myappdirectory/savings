@@ -60,10 +60,10 @@ export class PlanPage {
 			total_due: this.appData.currentPlan.total_due,
 			final_amount: this.appData.currentPlan.final_amount,
 			color: this.appData.currentPlan.color,
-			paid_amount: '0',
-			paid_due: '0',
+			paid_amount: 0,
+			paid_due: 0,
 			join_date: this.dataService.getCurrentTime(),
-			status: '2'
+			status: 2
 		};
 		this.dataService.saveItem(this._savingRef, data).then((res) => {
 			this.nav.setRoot(PlanSelectedPage, {savingID: res.key()});

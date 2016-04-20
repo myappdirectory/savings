@@ -4,7 +4,7 @@ import 'rxjs/add/operator/share';
 
 @Injectable()
 export class DataService {
-	private firebaseUrl = "https://saving.firebaseio.com/";
+	private firebaseUrl = "https://my-savings.firebaseio.com/";
 	public backendServer = "http://localhost/git/savings/";
 	public db: any;
 	public app: any;
