@@ -1,0 +1,61 @@
+<ion-navbar *navbar class="transparent">
+	<button menuToggle *ngIf="!selectedItem"><ion-icon name="menu"></ion-icon></button>
+	<ion-title>Sign Up</ion-title>
+</ion-navbar>
+
+<ion-content class="signup-page">
+	<div class="banner">
+		<div class="table">
+			<div class="table-cell">
+				<div class="logo"><div class="logo-text">Savings</div></div>
+			</div>
+		</div>
+	</div>
+	<div class="form" padding>
+		<div class="form-title">Create Account</div>
+		<div class="fields">
+			<form (ngSubmit)="signUp()" [ngFormModel]="signupForm" >
+				<ion-list>
+					<ion-item>
+						<ion-label><ion-icon name="person"></ion-icon></ion-label>
+						<ion-input type="text" placeholder="Firstname" ngControl="firstname" autofocus="!firstname.valid"></ion-input>
+					</ion-item>
+					<control-messages control="firstname"></control-messages>
+					<ion-item>
+						<ion-label><ion-icon name="person"></ion-icon></ion-label>
+						<ion-input type="text" placeholder="Lastname" ngControl="lastname" autofocus="!lastname.valid"></ion-input>
+					</ion-item>
+					<control-messages control="lastname"></control-messages>
+					<ion-item>
+						<ion-label><ion-icon name="mail"></ion-icon></ion-label>
+						<ion-input type="text" placeholder="Email" ngControl="email" autofocus="!email.valid"></ion-input>
+					</ion-item>
+					<control-messages control="email"></control-messages>
+					<ion-item>
+						<ion-label><ion-icon name="lock"></ion-icon></ion-label>
+						<ion-input type="password" placeholder="Password" ngControl="password" autofocus="!password.valid"></ion-input>
+					</ion-item>
+					<control-messages control="password"></control-messages>
+					<ion-item>
+						<ion-label><ion-icon name="call"></ion-icon></ion-label>
+						<ion-input type="password" placeholder="Phone" ngControl="phone" autofocus="!phone.valid"></ion-input>
+					</ion-item>
+					<control-messages control="phone"></control-messages>
+					<ion-item class="icon_select">
+						<ion-label><ion-icon name="location"></ion-icon><span class="text">Location</span></ion-label>
+						<ion-select ngControl="location" autofocus="!location.valid">
+							<ion-option value="mad">Chennai</ion-option>
+							<ion-option value="cbe">Coimbatore</ion-option>
+							<ion-option value="mdu">Madurai</ion-option>
+							<ion-option value="slm">Salem</ion-option>
+						</ion-select>
+					</ion-item>
+					<control-messages control="location"></control-messages>
+				</ion-list>
+				<div class="buttons">
+					<button block type="submit" [disabled]="!signupForm.valid">Sign Up</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</ion-content>

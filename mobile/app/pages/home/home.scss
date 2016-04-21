@@ -5,11 +5,11 @@
 		color: #fff;
 		padding: 20px;
 		text-align: center;
+		text-transform: capitalize;
 		.title {
 			font-size: 13px;
 			line-height: 20px;
-			padding: 20px 0;
-			text-transform: capitalize;
+			padding: 20px 0;			
 			strong { display: block; font-size: 16px; line-height: 30px;}
 		}
 		table {

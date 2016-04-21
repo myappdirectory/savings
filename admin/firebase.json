@@ -1,0 +1,8 @@
+{
+  "firebase": "my-savings",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*"
+  ]
+}

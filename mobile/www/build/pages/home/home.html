@@ -1,0 +1,61 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Savings</ion-title>
+</ion-navbar>
+
+<ion-content class="home-page"  *ngIf="appData">
+	<ion-refresher (refresh)="doRefresh($event)">
+		<ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing..."></ion-refresher-content>
+	</ion-refresher>
+	<div class="banner">
+		<div class="plan-box" *ngIf="appData.savings">
+			<div class="title">welcome <strong>Your Savings</strong></div>
+			<div class="plan-details">
+				<table>
+					<thead><tr><th>name</th><th>paid due</th><th>balance</th></thead>
+					<tbody>
+						<tr *ngFor="#saving of appData.savings | MapToIterable"><td>{{saving.name}}</td><td>{{saving.paid_due}}</td><td>{{saving.paid_amount}}</td></tr>
+					</tbody>
+				</table>
+				<div class="due-detail">1 due is pending</div>
+			</div>
+		</div>
+		<div class="no-plans" *ngIf="appData.savings === null">
+			<div class="title">welcome <strong>You don't have any active savings</strong></div>
+			<div padding class="buttons"><button block outline (click)="viewPlans();">Select plan</button></div>
+		</div>
+	</div>
+	
+	<div padding class="savings-list" *ngIf="appData.savings">		
+		<ion-card class="plan-card {{saving.color}}" *ngFor="#saving of appData.savings | MapToIterable" (click)="savingDetail(saving._ref)">
+			<ion-card-content>
+				<ion-card-title>
+					{{saving.name}} <span class="status-label {{saving.status | StatusLabel}}">{{saving.status | StatusLabel}}</span>
+					<p>{{saving.code}}</p>
+				</ion-card-title>
+				<ion-row>
+					<ion-col>plan name: {{saving.plan_name}}</ion-col><ion-col>Due Type: {{saving.due_type}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>start date: {{saving.join_date}}</ion-col><ion-col>Due Amount: {{saving.due_amount}}</ion-col>
+				</ion-row>
+			</ion-card-content>
+			<ion-item class="card-footer">
+				<button primary clear item-left>
+					<ion-icon name="arrow-dropright"></ion-icon>
+					<div>Dues Paid <br/>{{saving.paid_due}} / {{saving.total_due}}</div>
+				</button>		
+				<button primary clear item-left>
+					<ion-icon name="arrow-dropright"></ion-icon>
+					<div>Amount Paid <br/> Rs. {{saving.paid_amount}}</div>
+				</button>
+				<button primary clear item-left>
+					<ion-icon name="arrow-dropright"></ion-icon>
+					<div>Final Amount <br/> Rs. {{saving.final_amount}}</div>
+				</button>
+			</ion-item>
+		</ion-card>
+	</div>
+</ion-content>

@@ -336,7 +336,7 @@ export class DataService {
 			data = this.removeUndefined(data);
 			if(data._ref) {
 				data.created = this.getCurrentTime();
-				data.updated = this.getCurrentTime();
+				data.updated = data.created;
 				var res = this.db.child(moduleRef).child(data._ref).update(data);
 				this.hideLoading();
 			} else {

@@ -1,0 +1,35 @@
+<ion-navbar *navbar>
+	<button menuToggle *ngIf="!selectedItem"><ion-icon name="menu"></ion-icon></button>
+	<ion-title>Plan detail</ion-title>
+</ion-navbar>
+
+<ion-content padding class="plan-page" *ngIf="appData.currentPlan">
+	<ion-refresher (refresh)="doRefresh($event)">
+		<ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing..."></ion-refresher-content>
+	</ion-refresher>
+	<ion-card class="plan-card {{appData.currentPlan.color}}">		
+		<ion-card-content>
+			<ion-card-title>
+				{{appData.currentPlan.name}}
+				<p>{{appData.currentPlan.code}}</p>
+			</ion-card-title>			
+			<p>{{appData.currentPlan.description}}</p>
+		</ion-card-content>
+		<ion-item>
+			<button primary clear item-left>
+				<ion-icon name="text"></ion-icon>
+				<div>{{appData.currentPlan.total_due}} Dues</div>
+			</button>		
+			<button primary clear item-left>
+				<ion-icon name="text"></ion-icon>
+				<div>{{appData.currentPlan.due_amount}} / {{appData.currentPlan.due_type}}</div>
+			</button>
+			<button primary clear item-right>
+				<div>Total: {{appData.currentPlan.final_amount}}</div>
+			</button>
+		</ion-item>
+	</ion-card>
+	<div class="buttons">
+		<button block (click)="selectPlan(appData.currentPlan._ref)">Select Plan</button>
+	</div>
+</ion-content>

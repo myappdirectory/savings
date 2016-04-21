@@ -1,0 +1,48 @@
+<ion-navbar *navbar>
+	<button menuToggle *ngIf="!selectedItem"><ion-icon name="menu"></ion-icon></button>
+	<ion-title>Saving detail</ion-title>
+</ion-navbar>
+
+<ion-content class="saving-page" *ngIf="appData">
+	<ion-refresher (refresh)="doRefresh($event)">
+		<ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing..."></ion-refresher-content>
+	</ion-refresher>
+	<div padding class="banner {{appData.currentSaving.color}}" *ngIf="appData.currentSaving">
+		<div class="table">
+			<div class="table-cell">
+				<h2>
+					{{appData.currentSaving.name}} 
+					<span class="status-label {{appData.currentSaving.status | StatusLabel}}">{{appData.currentSaving.status | StatusLabel}}</span>
+				</h2>
+				<ion-row>
+					<ion-col width-50>plan name: {{appData.currentSaving.plan_name}}</ion-col>
+					<ion-col width-50>Due Type: {{appData.currentSaving.due_type}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col width-50>start date: {{appData.currentSaving.join_date}}</ion-col>
+					<ion-col width-50>Due Amount: {{appData.currentSaving.due_amount}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col width-50>Dues Paid: {{appData.currentSaving.paid_due}} / {{appData.currentSaving.total_due}}</ion-col>
+					<ion-col width-50>Amount Paid: Rs. {{appData.currentSaving.paid_amount}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col width-50>Final Amount: Rs. {{appData.currentSaving.final_amount}}</ion-col>
+					<ion-col width-50>Amount Paid: Rs. {{appData.currentSaving.paid_amount}}</ion-col>
+				</ion-row>
+			</div>
+		</div>
+		<div class="buttons">
+			<button block outline (click)="payDue(appData.currentSaving._ref)">Pay Now</button>
+		</div>
+	</div>
+	<ion-list *ngIf="appData.transactions">
+		<ion-item *ngFor="#transaction of appData.transactions | MapToIterable">
+			<ion-avatar item-left>
+				<img src="img/avatar-finn.png">
+			</ion-avatar>
+			<h2>{{transaction.amount}}</h2>
+			<p>{{transaction.datetime}}</p>
+		</ion-item>
+	</ion-list>
+</ion-content>
