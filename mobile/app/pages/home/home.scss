@@ -25,6 +25,20 @@
 		}
 	}
 }
+.banner {
+	background-image: url('../../img/start-bg.jpg');
+	background-size: cover;
+	color: #fff;
+	padding: 20px;
+	text-align: center;
+	text-transform: capitalize;
+	.title {
+		font-size: 13px;
+		line-height: 20px;
+		padding: 20px 0;			
+		strong { display: block; font-size: 16px; line-height: 30px;}
+	}
+}
 .status-label {
 	background-color: map-get($colors, primary);
 	color: #fff;

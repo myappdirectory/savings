@@ -85,6 +85,11 @@ textarea {
   -ms-touch-action: manipulation;
   touch-action: manipulation; }
 
+a ion-label,
+button ion-label,
+[tappable] ion-label {
+  pointer-events: none; }
+
 button {
   border: 0;
   font-family: inherit;
@@ -980,10 +985,11 @@ ion-scroll {
     -webkit-overflow-scrolling: touch;
     will-change: scroll-position; }
 
-ion-swipe-slides {
-  display: block;
-  width: 100%;
-  height: 100%; }
+.hidden-show-when {
+  display: none; }
+
+.hidden-hide-when {
+  display: none; }
 
 /**
  * Swiper 3.1.2
@@ -4418,54 +4424,6 @@ ion-icon {
   text-transform: none;
   speak: none; }
 
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
 ion-content {
   color: #000; }
 
@@ -4592,30 +4550,6 @@ sup[favorite],
 ion-icon[favorite] {
   color: #69BB7B; }
 
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
 ion-action-sheet {
   position: absolute;
   top: 0;
@@ -4671,33 +4605,17 @@ ion-action-sheet {
   background: #fff; }
   .action-sheet-group:last-child .action-sheet-button {
     margin-bottom: 8px; }
+  .action-sheet-group .button-inner {
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start; }
+
+.action-sheet-selected {
+  font-weight: bold; }
 
 .action-sheet-cancel {
   background: transparent; }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
 
 ion-alert {
   position: absolute;
@@ -4865,7 +4783,7 @@ ion-alert .backdrop {
 
 .alert-radio-icon {
   position: relative;
-  top: 13px;
+  top: 0;
   left: 13px;
   display: block;
   margin: 0;
@@ -4906,7 +4824,7 @@ ion-alert .backdrop {
 
 .alert-checkbox-icon {
   position: relative;
-  top: 13px;
+  top: 0;
   left: 13px;
   width: 16px;
   height: 16px;
@@ -5002,30 +4920,6 @@ ion-badge {
 .badge-favorite {
   color: #fff;
   background-color: #69BB7B; }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
 
 .button {
   -webkit-user-select: none;
@@ -5378,30 +5272,6 @@ ion-button-effect {
     line-height: .67;
     pointer-events: none; }
 
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
 ion-card {
   display: block;
   overflow: hidden; }
@@ -5485,30 +5355,6 @@ ion-card {
 
 ion-card + ion-card {
   margin-top: 0; }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
 
 ion-checkbox {
   position: relative;
@@ -5668,34 +5514,12 @@ ion-chip ion-icon[favorite] {
   color: #fff;
   background-color: #69BB7B; }
 
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-[no-padding] {
+[no-padding],
+[no-padding] scroll-content {
   padding: 0; }
 
-[no-margin] {
+[no-margin],
+[no-margin] scroll-content {
   margin: 0; }
 
 ion-fixed {
@@ -5708,76 +5532,64 @@ ion-content {
   background-color: #fff; }
 
 [padding],
-[padding] > scroll-content {
+[padding] scroll-content {
   padding: 16px; }
 
-[padding-top] {
+[padding-top],
+[padding-top] scroll-content {
   padding-top: 16px; }
 
-[padding-left] {
+[padding-left],
+[padding-left] scroll-content {
   padding-left: 16px; }
 
-[padding-right] {
+[padding-right],
+[padding-right] scroll-content {
   padding-right: 16px; }
 
-[padding-bottom] {
+[padding-bottom],
+[padding-bottom] scroll-content {
   padding-bottom: 16px; }
 
-[padding-vertical] {
+[padding-vertical],
+[padding-vertical] scroll-content {
   padding-top: 16px;
   padding-bottom: 16px; }
 
-[padding-horizontal] {
+[padding-horizontal],
+[padding-horizontal] scroll-content {
   padding-right: 16px;
   padding-left: 16px; }
 
 [margin],
-[margin] > scroll-content {
+[margin] scroll-content {
   margin: 16px; }
 
-[margin-top] {
+[margin-top],
+[margin-top] scroll-content {
   margin-top: 16px; }
 
-[margin-left] {
+[margin-left],
+[margin-left] scroll-content {
   margin-left: 16px; }
 
-[margin-right] {
+[margin-right],
+[margin-right] scroll-content {
   margin-right: 16px; }
 
-[margin-bottom] {
+[margin-bottom],
+[margin-bottom] scroll-content {
   margin-bottom: 16px; }
 
-[margin-vertical] {
+[margin-vertical],
+[margin-vertical] scroll-content {
   margin-top: 16px;
   margin-bottom: 16px; }
 
-[margin-horizontal] {
+[margin-horizontal],
+[margin-horizontal] scroll-content {
   margin-right: 16px;
   margin-left: 16px; }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
 
 ion-input,
 ion-textarea {
@@ -5842,6 +5654,13 @@ input.text-input:-webkit-autofill {
 .input-has-focus .input-cover {
   display: none; }
 
+.input-has-focus {
+  pointer-events: none; }
+
+.input-has-focus input,
+.input-has-focus textarea {
+  pointer-events: auto; }
+
 [next-input] {
   position: absolute;
   bottom: 1px;
@@ -5860,7 +5679,7 @@ input.text-input:-webkit-autofill {
   background-position: center; }
 
 .text-input.cloned-input {
-  position: absolute;
+  position: relative;
   top: 0;
   pointer-events: none; }
 
@@ -5919,30 +5738,6 @@ ion-input[clearInput] {
   bottom: 2px;
   width: 30px;
   background-size: 22px; }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
 
 .item {
   display: -webkit-box;
@@ -6265,30 +6060,6 @@ ion-item-divider[favorite] {
 ion-item-sliding {
   background-color: #fff; }
 
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
 ion-label {
   display: block;
   overflow: hidden;
@@ -6323,9 +6094,6 @@ ion-label[fixed] {
 
 ion-label[stacked],
 ion-label[floating] {
-  -webkit-flex-basis: 100%;
-  -ms-flex-preferred-size: 100%;
-  flex-basis: 100%;
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
@@ -6408,30 +6176,6 @@ ion-label[dark] {
 
 ion-label[favorite] {
   color: #69BB7B; }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
 
 ion-list-header {
   display: block;
@@ -6588,83 +6332,11 @@ ion-loading {
 .loading-spinner .spinner-dots circle {
   fill: #fff; }
 
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
 ion-menu {
   background: #f2f2f2; }
 
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
 ion-page.modal {
   background-color: #fff; }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
 
 ion-radio {
   position: relative;
@@ -6734,30 +6406,6 @@ ion-radio[dark] .radio-checked {
 ion-radio[favorite] .radio-checked {
   border-color: #69BB7B; }
 
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
 ion-searchbar {
   position: relative;
   display: -webkit-box;
@@ -6790,9 +6438,13 @@ ion-searchbar {
   font-family: inherit; }
 
 .searchbar-clear-icon {
+  display: none;
   margin: 0;
   padding: 0;
   min-height: 0; }
+
+.searchbar-has-value.searchbar-focused .searchbar-clear-icon {
+  display: block; }
 
 ion-searchbar {
   padding: 8px;
@@ -6877,30 +6529,6 @@ ion-searchbar[dark].searchbar-focused .searchbar-input-container {
 
 ion-searchbar[favorite].searchbar-focused .searchbar-input-container {
   border-color: #69BB7B; }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
 
 ion-segment {
   display: -webkit-box;
@@ -6999,30 +6627,6 @@ ion-segment[favorite] .segment-button {
     color: #69BB7B;
     opacity: 1; }
 
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
 ion-select {
   display: -webkit-box;
   display: -webkit-flex;
@@ -7084,30 +6688,6 @@ ion-select {
   -webkit-transform: rotate(135deg);
   transform: rotate(135deg);
   pointer-events: none; }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
 
 ion-tabs {
   display: -webkit-box;
@@ -7218,6 +6798,16 @@ tabbar {
   background: none;
   cursor: pointer; }
 
+.tab-disabled {
+  pointer-events: none; }
+  .tab-disabled ion-badge,
+  .tab-disabled ion-icon,
+  .tab-disabled span {
+    opacity: .4; }
+
+.tab-hidden {
+  display: none; }
+
 .tab-button-text {
   margin-top: 3px;
   margin-bottom: 2px; }
@@ -7326,17 +6916,19 @@ tabbar {
   min-width: 2.4rem;
   font-size: 2.4rem; }
 
-[tabbarIcons=bottom] .tab-button {
+[tabbarLayout=icon-bottom] .tab-button {
   padding-top: 8px;
   padding-bottom: 8px; }
 
-[tabbarIcons=right] .tab-button,
-[tabbarIcons=left] .tab-button {
+[tabbarLayout=icon-right] .tab-button,
+[tabbarLayout=icon-left] .tab-button {
   padding-bottom: 10px; }
-  [tabbarIcons=right] .tab-button ion-icon,
-  [tabbarIcons=left] .tab-button ion-icon {
+  [tabbarLayout=icon-right] .tab-button ion-icon,
+  [tabbarLayout=icon-left] .tab-button ion-icon {
     min-width: 24px; }
 
+[tabbarLayout=icon-hide] .tab-button,
+[tabbarLayout=title-hide] .tab-button,
 .tab-button.icon-only,
 .tab-button.has-title-only {
   padding: 6px 10px; }
@@ -7395,30 +6987,6 @@ ion-tabs[favorite] tabbar {
     border-color: #fff;
     color: #fff; }
 
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
-
 ion-toggle {
   position: relative; }
 
@@ -7439,7 +7007,13 @@ ion-toggle {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: #323232; }
+  background-color: #323232;
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+  -webkit-transition-property: background-color, -webkit-transform;
+  transition-property: background-color, -webkit-transform;
+  transition-property: transform, background-color;
+  transition-property: transform, background-color, -webkit-transform; }
 
 .toggle-checked {
   border-color: #2196f3;
@@ -7508,29 +7082,66 @@ ion-toggle[favorite] .toggle-checked {
 ion-toggle[favorite] .toggle-checked .toggle-inner {
   background-color: #fff; }
 
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
+ion-toast {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: block;
+  width: 100%;
+  height: 100%; }
 
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
+.toast-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  .toast-container button {
+    padding: 19px 16px 17px;
+    font-size: 1.5rem; }
 
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
+.toast-message {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1; }
 
-@font-face {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
+.toast-wrapper {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  display: block;
+  margin: auto;
+  max-width: 700px;
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0); }
+
+.toast-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  display: block;
+  margin: auto;
+  max-width: 700px;
+  border-radius: 0;
+  background: black;
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0); }
+
+.toast-message {
+  padding: 1.5rem;
+  font-size: 1.4rem;
+  color: #fff; }
+
+.toast-button {
+  color: #fff; }
 
 .toolbar {
   position: relative;
@@ -8823,6 +8434,55 @@ ion-buttons[right] {
     color: #fff;
     background-color: #61ac71; }
 
+ion-navbar-section.statusbar-padding {
+  height: calc(4.6rem + 20px);
+  min-height: calc(4.6rem + 20px); }
+
+ion-navbar-section.statusbar-padding > .toolbar {
+  padding-top: 20px;
+  height: calc(4.6rem + 20px);
+  min-height: calc(4.6rem + 20px); }
+
+ion-nav > ion-page > .toolbar.statusbar-padding:first-child,
+ion-menu > .toolbar.statusbar-padding:first-child {
+  padding-top: 20px;
+  height: calc(4.6rem + 20px);
+  min-height: calc(4.6rem + 20px); }
+
+ion-nav > ion-page > ion-content.statusbar-padding:first-child scroll-content,
+ion-menu > ion-content.statusbar-padding:first-child scroll-content {
+  padding-top: 20px; }
+
+ion-nav > ion-page > ion-content.statusbar-padding:first-child[padding] scroll-content,
+ion-nav > ion-page > ion-content.statusbar-padding:first-child[padding-top] scroll-content,
+ion-menu > ion-content.statusbar-padding:first-child[padding] scroll-content,
+ion-menu > ion-content.statusbar-padding:first-child[padding-top] scroll-content {
+  padding-top: calc(16px + 20px); }
+
+@font-face {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.ttf") format("truetype"); }
+
 body {
   font-family: "Segoe UI", "Noto Sans", sans-serif;
   font-size: 1.4rem;
@@ -9097,6 +8757,22 @@ a {
   .home-page .banner button[outline] {
     border-color: #fff;
     color: #fff; }
+
+.banner {
+  background-image: url("../../img/start-bg.jpg");
+  background-size: cover;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  text-transform: capitalize; }
+  .banner .title {
+    font-size: 13px;
+    line-height: 20px;
+    padding: 20px 0; }
+    .banner .title strong {
+      display: block;
+      font-size: 16px;
+      line-height: 30px; }
 
 .status-label {
   background-color: #2196f3;
