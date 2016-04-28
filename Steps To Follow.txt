@@ -1,0 +1,54 @@
+==================================================================================================
+Base Environment Setup
+--------------------------------------------------------------------------------------------------
+1.	Install node.js and npm (Ref: https://nodejs.org/en/download/)
+2.	Install Android Studio	(Ref: http://developer.android.com/sdk/installing/index.html)
+3.	Install JAVA JDK 1.8 or greater
+4.	Add below in Environmental Variables
+	a.	create JAVA_HOME	=	C:\Program Files\Java\jdk1.8.0_45
+	b.	create ANDRIOD_HOME	=	D:\android;D:\android\sdk\;D:\android\sdk\platforms;D:\android\sdk\platform-tools;D:\android\tools;
+	c.	update path		=	D:\android;D:\android\sdk\;D:\android\sdk\platforms;D:\android\sdk\platform-tools;D:\android\tools; (append with existing value)
+==================================================================================================
+Project Setup
+--------------------------------------------------------------------------------------------------
+1.	Git clone the repository to local machine
+	a.	Folder	-->		admin	-->		Related to backend
+	b.	Folder	-->		mobile	-->		Related to mobile apk(ionic framework)
+2.	Check whether node_modules directory exits inside admin and mobile folder. If not run "npm install" this will download required node modules
+	a. (i.e) If node_bodules directory not exists in the mobile folder then follow the below steps
+		1.	open cmd window
+		2.	navigate to the mobile folder
+		3.	run "npm install"
+3.	Check installation
+		a.	Open cmd window goto admin directory, run "npm start". If eveything is fine it will automatically open the url (http://localhost:3000/) and you can access the admin area.
+		b.	similarly goto mobile directory, run "ionic serve". If eveything is fine it will automatically open the url (http://localhost:8100/) and you can access the app (change the borwser mode to mobile view).
+		c.	If anything failed in the above, it seems all the modules are not installed properly. try to google the error.
+==================================================================================================
+Working on the code
+--------------------------------------------------------------------------------------------------
+1.	Admin	-->		run cmd "npm install". It will start live-server and watch file changes. Once you chnange any files it will compile and update the browser
+2.	Mobile	-->		run cmd "ionic serve". It will start live-server and watch file changes. Once you chnange any files it will compile and update the browser
+==================================================================================================
+Deploying Code
+--------------------------------------------------------------------------------------------------
+1.	Admin	(Ref: https://www.firebase.com/docs/hosting/quickstart.html)
+	a.	open cmd window goto admin folder run below comments
+		1.	npm install -g firebase-tools
+		2.	firebase init	-	It will ask you to login to your firebase account. Login with this credentials(myappdirectory@gmail.com / myappdirectory123)
+		3.	firebase deploy
+	b.	First two steps required for first time setup only. after that you can directly deploy using 3rd comment
+2.	Mobile	(Ref: http://ionicframework.com/docs/guide/publishing.html)
+	a.	open cmd window goto mobile folder run below comments
+		1.	ionic platform add android
+		2.	ionic resources
+		3.	cordova build --release android
+		
+	The Above steps will create an unsigned apk in this location (mobile/platforms/android/build/outputs/apk/android-release-unsigned.apk)
+	To make this to usable in app store follow below steps
+	
+		4.	keytool -genkey -v -keystore my-savings.keystore -alias my-savings -keyalg RSA -keysize 2048 -validity 10000 (keystore.password: myappdirectory)
+		5.	jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-savings.keystore platforms/android/build/outputs/apk/android-release-unsigned.apk my-savings
+		6.	D:\android\sdk\build-tools\android-4.4W\zipalign -v 4 platforms/android/build/outputs/apk/android-release-unsigned.apk Savings.apk
+			Note: D:\android\sdk\build-tools\android-4.4W\zipalign --> this location will chnage based on your android installation
+		
+		This will create Savings.apk file in the mobile folder

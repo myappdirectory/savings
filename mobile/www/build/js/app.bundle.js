@@ -189,6 +189,7 @@ var HomePage = (function () {
         this.dataService.observable$.subscribe(function (res) {
             _this.appData = res;
         });
+        this.dataService.getConfig();
         this.dataService.getMySavings(this._moduleRef);
     };
     HomePage.prototype.doRefresh = function (refresher) {

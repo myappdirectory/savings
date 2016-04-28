@@ -30,6 +30,8 @@
 												<span *ngIf="field.code != 'status' && field.code != 'location'">{{item[field.code]}}</span>
 											</span>
 											<img [src]="item[field.code]" class="thumb" *ngIf="field.type == 'image'"/>
+											<span class="value" *ngIf="field.type == 'user' && app.users">{{app.users[item[field.code]].firstname + '' +app.users[item[field.code]].lastname}}</span>
+											<span class="value" *ngIf="field.type == 'plan' && app.plans">{{app.plans[item[field.code]].name}}</span>
 										</td>
 										<td class="a-center">
 											<a href="javascript:;" class="edit-link" (click)="editItem(item._ref)">
@@ -63,7 +65,7 @@
 								</div>
 								<div class="editable-part padding1">
 									<div class="row">
-										<div class="col-md-6">
+										<div class="col-md-6" style="display: none;">
 											<div class="md-input" [class.filled]="selectedItem.code">
 												<span class="placeholder">Code</span>
 												<input type="text" class="textbox" ngControl="code" [ngModel]="selectedItem.code" />
@@ -80,16 +82,20 @@
 									</div>
 									<div class="row">
 										<div class="col-md-6">
-											<div class="md-input" [class.filled]="selectedItem.uid">
+											<div class="md-select" [class.filled]="selectedItem.uid">
 												<span class="placeholder">Customer</span>
-												<input type="text" class="textbox" ngControl="uid" [ngModel]="selectedItem.uid"/>
+												<select class="selectbox" ngControl="uid" [ngModel]="selectedItem.uid" (change)="selectedItem.uid = $event.target.value">
+													<option *ngFor="#user of app.users | MapToIterable" [value]="user._ref">{{user.firstname +' '+ user.lastname}}</option>
+												</select>		
 												<control-messages control="uid"></control-messages>
 											</div>
 										</div>
 										<div class="col-md-6">
-											<div class="md-input" [class.filled]="selectedItem.plan_id">
+											<div class="md-select" [class.filled]="selectedItem.plan_id">
 												<span class="placeholder">Plan</span>
-												<input type="text" class="textbox" ngControl="plan_id" [ngModel]="selectedItem.plan_id"/>
+												<select class="selectbox" ngControl="plan_id" [ngModel]="selectedItem.plan_id" (change)="selectedItem.uid = $event.target.value">
+													<option *ngFor="#plan of app.plans | MapToIterable" [value]="plan._ref">{{plan.name}}</option>
+												</select>		
 												<control-messages control="plan_id"></control-messages>
 											</div>
 										</div>										
@@ -103,7 +109,7 @@
 											</div>
 										</div>
 										<div class="col-md-6">
-											<div class="md-input" [class.filled]="selectedItem.paid_due">
+											<div class="md-input" [class.filled]="selectedItem.paid_due !== ''">
 												<span class="placeholder">Paid Due</span>
 												<input type="text" class="textbox" ngControl="paid_due" [ngModel]="selectedItem.paid_due"/>
 												<control-messages control="paid_due"></control-messages>
@@ -112,7 +118,7 @@
 									</div>									
 									<div class="row">		
 										<div class="col-md-6">
-											<div class="md-input" [class.filled]="selectedItem.paid_amount">
+											<div class="md-input" [class.filled]="selectedItem.paid_amount !== ''">
 												<span class="placeholder">Paid Amount</span>
 												<input type="text" class="textbox" ngControl="paid_amount" [ngModel]="selectedItem.paid_amount" [disabled]="selectedItem.paid_amount"/>
 												<control-messages control="paid_amount"></control-messages>

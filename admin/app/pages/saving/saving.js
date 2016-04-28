@@ -38,10 +38,12 @@ System.register(['angular2/core', 'angular2/common', '../../services/data/data',
                     this.dataService = dataService;
                     this.fb = fb;
                     this._moduleRef = 'saving';
+                    this._userRef = 'users';
+                    this._planRef = 'plan';
                     this.mode = 'list';
                     this.form = fb.group({
                         _ref: [""],
-                        code: ["", common_1.Validators.required],
+                        code: [""],
                         name: ["", common_1.Validators.required],
                         uid: ["", common_1.Validators.required],
                         plan_id: ["", common_1.Validators.required],
@@ -55,8 +57,8 @@ System.register(['angular2/core', 'angular2/common', '../../services/data/data',
                         fields: [
                             { code: 'name', title: 'Name', type: 'text', 'formatter': '' },
                             { code: 'code', title: 'Code', type: 'text', 'formatter': '' },
-                            { code: 'uid', title: 'Customer', type: 'text', 'formatter': '' },
-                            { code: 'plan_id', title: 'Plan', type: 'text', 'formatter': '' },
+                            { code: 'uid', title: 'Customer', type: 'user', 'formatter': '' },
+                            { code: 'plan_id', title: 'Plan', type: 'plan', 'formatter': '' },
                             { code: 'paid_due', title: 'Paid Due', type: 'text', 'formatter': '' },
                             { code: 'paid_amount', title: 'Paid Amount', type: 'text', 'formatter': '' },
                             { code: 'status', title: 'Status', type: 'text', 'formatter': 'StatusLabel' }
@@ -69,6 +71,8 @@ System.register(['angular2/core', 'angular2/common', '../../services/data/data',
                         _this.app = res;
                     });
                     this.dataService.getItems(this._moduleRef, 'listItems');
+                    this.dataService.getItems(this._userRef, 'users');
+                    this.dataService.getItems(this._planRef, 'plans');
                 };
                 SavingPage.prototype.addNew = function () {
                     this.selectedItem = {};

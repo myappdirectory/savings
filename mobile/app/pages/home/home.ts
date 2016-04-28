@@ -18,6 +18,7 @@ export class HomePage {
 		this.dataService.observable$.subscribe(res => {
 			this.appData = res;			
 		});
+		this.dataService.getConfig();
 		this.dataService.getMySavings(this._moduleRef);
 	}
 	

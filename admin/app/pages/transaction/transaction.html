@@ -30,6 +30,8 @@
 												<span *ngIf="field.code != 'status' && field.code != 'location'">{{item[field.code]}}</span>
 											</span>
 											<img [src]="item[field.code]" class="thumb" *ngIf="field.type == 'image'"/>
+											<span class="value" *ngIf="field.type == 'user' && app.users">{{app.users[item[field.code]].firstname +' '+ app.users[item[field.code]].lastname}}</span>
+											<span class="value" *ngIf="field.type == 'saving' && app.savings">{{app.savings[item[field.code]].name}}</span>
 										</td>
 										<td class="a-center">
 											<a href="javascript:;" class="edit-link" (click)="editItem(item._ref)">

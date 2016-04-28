@@ -16,6 +16,8 @@ import {MapToIterable, StatusLabel, LocationLabel} from '../../pipes/custom.pipe
 export class TransactionPage {
 	public app: any;
 	public _moduleRef = 'transaction';
+	public _userRef = 'users';
+	public _savingRef = 'saving';
 	public mode = 'list';
 	public selectedItem: any;
 	
@@ -34,8 +36,8 @@ export class TransactionPage {
 		this.list = {
 			title: 'Manage Transaction',
 			fields : [
-				{code: 'uid', title: 'Customer', type: 'text', 'formatter': ''},
-				{code: 'saving_id', title: 'Saving', type: 'text', 'formatter': ''},
+				{code: 'uid', title: 'Customer', type: 'user', 'formatter': ''},
+				{code: 'saving_id', title: 'Saving', type: 'saving', 'formatter': ''},
 				{code: 'paid_due', title: 'Paid Due', type: 'text', 'formatter': ''},
 				{code: 'due_amount', title: 'Due Amount', type: 'text', 'formatter': ''},
 				{code: 'status', title: 'Status', type: 'text', 'formatter': 'StatusLabel'}
@@ -48,6 +50,8 @@ export class TransactionPage {
 			this.app = res;
 		});
 		this.dataService.getItems(this._moduleRef, 'listItems');
+		this.dataService.getItems(this._userRef, 'users');
+		this.dataService.getItems(this._savingRef, 'savings');
 	}
 	
 	addNew() {

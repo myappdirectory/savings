@@ -16,6 +16,8 @@ import {MapToIterable, StatusLabel, LocationLabel} from '../../pipes/custom.pipe
 export class SavingPage {
 	public app: any;
 	public _moduleRef = 'saving';
+	public _userRef = 'users';
+	public _planRef = 'plan';
 	public mode = 'list';
 	public selectedItem: any;
 	
@@ -25,7 +27,7 @@ export class SavingPage {
 	constructor(public dataService: DataService, public fb:FormBuilder) {
 		this.form = fb.group({
 			_ref: [""],
-			code: ["", Validators.required],
+			code: [""],
 			name: ["", Validators.required],
 			uid: ["", Validators.required],
 			plan_id: ["", Validators.required],
@@ -39,8 +41,8 @@ export class SavingPage {
 			fields : [
 				{code: 'name', title: 'Name', type: 'text', 'formatter': ''},
 				{code: 'code', title: 'Code', type: 'text', 'formatter': ''},
-				{code: 'uid', title: 'Customer', type: 'text', 'formatter': ''},
-				{code: 'plan_id', title: 'Plan', type: 'text', 'formatter': ''},
+				{code: 'uid', title: 'Customer', type: 'user', 'formatter': ''},
+				{code: 'plan_id', title: 'Plan', type: 'plan', 'formatter': ''},
 				{code: 'paid_due', title: 'Paid Due', type: 'text', 'formatter': ''},
 				{code: 'paid_amount', title: 'Paid Amount', type: 'text', 'formatter': ''},
 				{code: 'status', title: 'Status', type: 'text', 'formatter': 'StatusLabel'}
@@ -53,6 +55,8 @@ export class SavingPage {
 			this.app = res;
 		});
 		this.dataService.getItems(this._moduleRef, 'listItems');
+		this.dataService.getItems(this._userRef, 'users');
+		this.dataService.getItems(this._planRef, 'plans');
 	}
 	
 	addNew() {

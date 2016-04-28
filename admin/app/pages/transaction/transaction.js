@@ -38,6 +38,8 @@ System.register(['angular2/core', 'angular2/common', '../../services/data/data',
                     this.dataService = dataService;
                     this.fb = fb;
                     this._moduleRef = 'transaction';
+                    this._userRef = 'users';
+                    this._savingRef = 'saving';
                     this.mode = 'list';
                     this.form = fb.group({
                         _ref: [""],
@@ -50,8 +52,8 @@ System.register(['angular2/core', 'angular2/common', '../../services/data/data',
                     this.list = {
                         title: 'Manage Transaction',
                         fields: [
-                            { code: 'uid', title: 'Customer', type: 'text', 'formatter': '' },
-                            { code: 'saving_id', title: 'Saving', type: 'text', 'formatter': '' },
+                            { code: 'uid', title: 'Customer', type: 'user', 'formatter': '' },
+                            { code: 'saving_id', title: 'Saving', type: 'saving', 'formatter': '' },
                             { code: 'paid_due', title: 'Paid Due', type: 'text', 'formatter': '' },
                             { code: 'due_amount', title: 'Due Amount', type: 'text', 'formatter': '' },
                             { code: 'status', title: 'Status', type: 'text', 'formatter': 'StatusLabel' }
@@ -64,6 +66,8 @@ System.register(['angular2/core', 'angular2/common', '../../services/data/data',
                         _this.app = res;
                     });
                     this.dataService.getItems(this._moduleRef, 'listItems');
+                    this.dataService.getItems(this._userRef, 'users');
+                    this.dataService.getItems(this._savingRef, 'savings');
                 };
                 TransactionPage.prototype.addNew = function () {
                     this.selectedItem = {};

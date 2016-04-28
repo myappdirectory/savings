@@ -32,7 +32,7 @@
 				</ion-row>
 			</div>
 		</div>
-		<div class="buttons">
+		<div class="buttons" *ngIf="appData.currentSaving.status == 1">
 			<button block outline (click)="payDue(appData.currentSaving._ref)">Pay Now</button>
 		</div>
 	</div>
